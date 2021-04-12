@@ -14,8 +14,8 @@ Developed as a part of an assignment for the course CS 474 – Enterprise Softwa
 
 ###### Note 
 Following versions were used in the development of this demo:
-- ```Node.js``` 14.15.4.
-- ```Node Package Manager (npm)``` 7.9.0.
+- Node.js 14.15.4.
+- Node Package Manager (npm) 7.9.0.
 - Editor used was Visual Studio Code 1.55.1.
 
 ## Table of contents
@@ -90,12 +90,12 @@ You can test the microservices with Postman by importing the provided collection
 #### Create a new product
 This API will not be exposed to the client. Only for administrative purposes.
 
-Method – POST
-Route – ```http://localhost:3000/rest/v1/products```
+- Method – POST
+- Route – ```http://localhost:3000/rest/v1/products```
 
 This will create a new product in the database.
 
-Example request body:
+- Example request body:
 ```bash
 {
     "productId": "123245ds4234",
@@ -107,7 +107,7 @@ Example request body:
 }
 ```
 
-Example successful response:
+- Example successful response:
 ```bash
 {
     "availableQuantity": 6,
@@ -124,12 +124,12 @@ Example successful response:
 #### Retrieve list of products
 This API is exposed to the client.
 
-Method – GET
-Route – ```http://localhost:3000/rest/v1/products```
+- Method – GET
+- Route – ```http://localhost:3000/rest/v1/products```
 
 This will list all the available products in the database.
 
-Example successful response:
+- Example successful response:
 ```bash
 [
     {
@@ -158,12 +158,12 @@ Example successful response:
 #### Update a product
 This API will not be exposed to the client. Only for administrative purposes.
 
-Method – PUT
-Route – ```http://localhost:3000/rest/v1/products/<product-id-here>```
+- Method – PUT
+- Route – ```http://localhost:3000/rest/v1/products/<product-id-here>```
 
 This will find a product by provided id param and will update that product in the database.
 
-Example request body:
+- Example request body:
 ```bash
 {
     "productId": "123245ds4234",
@@ -175,7 +175,7 @@ Example request body:
 }
 ```
 
-Example successful response:
+- Example successful response:
 ```bash
 {
     "availableQuantity": 6,
@@ -192,12 +192,12 @@ Example successful response:
 #### Delete a product
 This API will not be exposed to the client. Only for administrative purposes.
 
-Method – DELETE
-Route – ```http://localhost:3000/rest/v1/products/<product-id-here>```
+- Method – DELETE
+- Route – ```http://localhost:3000/rest/v1/products/<product-id-here>```
 
 This will find a product by provided id param and will delete that product in the database.
 
-Example successful response:
+- Example successful response:
 ```bash
 {
     "message": "Product successfully deleted."
@@ -208,19 +208,19 @@ Example successful response:
 #### Create a new user with empty cart
 This API will not be exposed to the client. Only for administrative purposes. Design specified needed hard-coded users by the administrator.
 
-Method – POST
-Route – ```http://localhost:4000/rest/v1/users/```
+- Method – POST
+- Route – ```http://localhost:4000/rest/v1/users/```
 
 This will create a new user with an empty cart. If the user already exists, it returns an error.
 
-Example request body:
+- Example request body:
 ```bash
 {
     "userId": "test-user-1"
 }
 ```
 
-Example successful response:
+- Example successful response:
 ```bash
 {
     "_id": "6073db9d7f5f2161f09cefdd",
@@ -233,14 +233,16 @@ Example successful response:
 #### Create or Update cart item
 This API is exposed to the client.
 
-Method – PUT
-Route – ``http://localhost:4000/rest/v1/users/<userId>/cart```
+- Method – PUT
+- Route – ```http://localhost:4000/rest/v1/users/<userId>/cart```
 
 This will add a product to the cart if it doesn't exist or update the cart with the latest quantity if it exists. Also, connects with the Product Microservice API and validates the input quantity with the available quantity, and returns the product name and its amount. The amount is calculated by multiplying the product price with the quantity. 
 
 If the input quantity is more than the available quantity, the cart will be updated with the available quantity.
 
-Example request body:
+If the quantity is made zero for the product already in the cart, the product will be deleted from the cart. Otherwise, it returns error. It also returns error if the product id is not found.
+
+- Example request body:
 ```bash
 {
     "productId": "12445dsd234",
@@ -248,7 +250,7 @@ Example request body:
 }
 ```
 
-Example successful response:
+- Example successful response:
 ```bash
 [
     {
@@ -269,12 +271,12 @@ Example successful response:
 #### Retrieve user cart
 This API is exposed to the client.
 
-Method – GET
-Route – ```http://localhost:4000/rest/v1/users/<userId>/cart```
+- Method – GET
+- Route – ```http://localhost:4000/rest/v1/users/<userId>/cart```
 
 This will retrieve the user cart for a userId provided in the database.
 
-Example successful response:
+- Example successful response:
 ```bash
 [
     {
